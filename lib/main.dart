@@ -186,7 +186,7 @@ class _CalculatorFlowState extends State<CalculatorFlow> {
         _resultRow(Icons.home_outlined, 'Estimated home value', _money(homeValue)),
         _resultRow(Icons.account_balance_outlined, 'Estimated loan proceeds', _money(estimatedPrincipal)),
         _resultRow(Icons.payments_outlined, 'Mortgage payoff', '− ${_money(mortgageBalance)}'),
-        _resultRow(Icons.receipt_long_outlined, 'Sample fees', '− $9,500'),
+        _resultRow(Icons.receipt_long_outlined, 'Sample fees', '− \$9,500'),
         const SizedBox(height: 13),
         Container(padding: const EdgeInsets.all(16), decoration: BoxDecoration(color: const Color(0xFFFFF5E8), borderRadius: BorderRadius.circular(14), border: Border.all(color: const Color(0xFFFFE2B8))), child: const Row(crossAxisAlignment: CrossAxisAlignment.start, children: [Icon(Icons.info_outline, color: Color(0xFFB56B12), size: 20), SizedBox(width: 10), Expanded(child: Text('This demo uses simplified sample math. Actual proceeds depend on current rates, age, property, program, and lender fees.', style: TextStyle(color: Color(0xFF704B21), fontSize: 13, height: 1.45)))])),
         const SizedBox(height: 18),
