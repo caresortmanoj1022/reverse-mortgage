@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -32,7 +34,131 @@ class ReverseDemoApp extends StatelessWidget {
             focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: const BorderSide(color: blue, width: 1.6)),
           ),
         ),
-        home: const CalculatorFlow(),
+        home: const SplashScreen(),
+      );
+}
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  late final Timer _splashTimer;
+
+  @override
+  void initState() {
+    super.initState();
+    _splashTimer = Timer(const Duration(seconds: 2), () {
+      if (!mounted) return;
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute<void>(builder: (_) => const CalculatorFlow()),
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    _splashTimer.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => AnnotatedRegion<SystemUiOverlayStyle>(
+        value: const SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.light,
+          systemNavigationBarColor: Color(0xFF102F4C),
+          systemNavigationBarIconBrightness: Brightness.light,
+        ),
+        child: Scaffold(
+          body: Container(
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [Color(0xFF102F4C), navy, Color(0xFF17659B)],
+              ),
+            ),
+            child: SafeArea(
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Image.asset(
+                          'assets/spectrum-logo.png',
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                      const SizedBox(height: 32),
+                      Container(
+                        width: 156,
+                        height: 156,
+                        padding: const EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(.18),
+                              blurRadius: 24,
+                              offset: const Offset(0, 10),
+                            ),
+                          ],
+                        ),
+                        child: ClipOval(
+                          child: Image.asset(
+                            'assets/jerry-avatar.png',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 22),
+                      const Text(
+                        'Meet Jerry',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 26,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      const Text(
+                        'Your guide to this reverse mortgage demo',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Color(0xFFD9E9F5),
+                          fontSize: 15,
+                        ),
+                      ),
+                      const SizedBox(height: 28),
+                      const SizedBox(
+                        width: 26,
+                        height: 26,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2.5,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
       );
 }
 

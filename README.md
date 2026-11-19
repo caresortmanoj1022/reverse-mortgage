@@ -1,6 +1,6 @@
 # Spectrum One Reverse mobile demo
 
-A Flutter Android demo of a reverse mortgage estimate flow, inspired by the JERRY™ calculator at Spectrum One Reverse. It is a click-through visual mockup with fixed sample results; form values do not change the displayed estimate.
+A Flutter Android demo of a reverse mortgage estimate flow, inspired by the JERRY™ calculator at Spectrum One Reverse. It opens with a brief logo-and-Jerry splash screen, then shows a click-through visual mockup with fixed sample results; form values do not change the displayed estimate.
 
 The Spectrum One Reverse logo and Jerry images are sourced from [spectrumonereverse.com](https://spectrumonereverse.com/). This is an independent UI demo and is not affiliated with or endorsed by Spectrum One Reverse.
 
